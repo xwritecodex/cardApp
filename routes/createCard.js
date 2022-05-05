@@ -16,7 +16,15 @@ router.get('/', authenticateLogin, restrictRoute, async function(req, res, next)
 router.post('/', authenticateLogin, restrictRoute, async function(req, res, next) {
     const card = new Card(req.body);
     const tags = req.body.tags.split(' ');
-    card.tags = tags;
+
+    let withoutCommas = []
+
+    tags.forEach((tag) => {
+        tag = tag.replace(/,/g, '')
+        withoutCommas.push(tag)
+    })
+
+    card.tags = withoutCommas
 
     // TAGGING HERE
     if (req.body.tags != '') {
