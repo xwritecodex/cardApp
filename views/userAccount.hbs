@@ -1,11 +1,12 @@
 <main>
   {{#if loggedIn}}
-  <h5>Currently logged in as {{username}}.</h5>
+  <div>
+  <h4><img src="{{userImage}}" class="avatar" >{{username}}</h4>
+  </div>
   {{/if}}
 
   <form action='/userAccount' method="GET"></form>
-  <div>
-  <img src="{{userImage}}" class="avatar">  
+  <div>  
     <div class="col-md-12">
     <h4>Card Collection</h4>
       <div class="row">
