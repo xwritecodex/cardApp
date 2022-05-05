@@ -84,6 +84,7 @@ router.post(
                 }
             });
             let selectedCards = req.cookies.selected_cards
+            deck.creator = res.id
             deck.cards = JSON.parse(selectedCards);
             deck.save((err, doc) => {
                 if (err) {
@@ -96,6 +97,7 @@ router.post(
             });
         } else {
             let selectedCards = req.cookies.selected_cards
+            deck.creator = res.id
             deck.cards = JSON.parse(selectedCards);
             deck.save((err, doc) => {
                 if (err) {
