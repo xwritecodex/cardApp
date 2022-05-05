@@ -52,14 +52,18 @@ router.get("/", authenticateLogin, restrictRoute, async function (req, res, next
     }
 );
 
-router.post(
-    "/",
-    authenticateLogin,
-    restrictRoute,
-    async function (req, res, next) {
+router.post("/", authenticateLogin, restrictRoute, async function (req, res, next) {
         const deck = new Deck(req.body);
-        const tags = req.body.tags.split(" ");
-        deck.tags = tags;
+        const tags = req.body.tags.split(' ');
+
+        let withoutCommas = []
+    
+        tags.forEach((tag) => {
+            tag = tag.replace(/,/g, '')
+            withoutCommas.push(tag)
+        })
+    
+        deck.tags = withoutCommas
 
         // TAGGING HERE
         if (req.body.tags != "") {
