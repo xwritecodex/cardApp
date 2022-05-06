@@ -10,7 +10,32 @@ const DeckTag = require("../models/DeckTag");
 // GET SEARCH RESULTS
 
 router.get("/", authenticateLogin, async function (req, res, next) {
-  console.log("SEARCHED!")
+
+    // IMPLEMENT AUTOFILL FOR QUERY
+    let searchables = []
+    let cardAutofill = await Card.find({}).lean()
+    cardAutofill.forEach((card) => {
+        card.cardName.split(' ').forEach((word) => {
+            searchables.push(word.toLowerCase())
+        })
+    })
+    let deckAutofill = await Deck.find({}).lean()
+    deckAutofill.forEach((deck) => {
+        deck.deckName.split(' ').forEach((word) => {
+            searchables.push(word.toLowerCase())
+        })
+    })
+    let taggedCardAutofill = await CardTag.find({}).lean()
+    taggedCardAutofill.forEach((tag) => {
+        searchables.push(tag.tag.toLowerCase())
+    })
+    let taggedDeckAutofill = await DeckTag.find({}).lean()
+    taggedDeckAutofill.forEach((tag) => {
+        searchables.push(tag.tag.toLowerCase())
+    })
+    searchables = Array.from(new Set(searchables));
+
+
   // HANDLE QUERY LOGIC
   if (req.query.search != "" && req.query.search != undefined) {
     let cards = await Card.find({})
@@ -35,28 +60,32 @@ router.get("/", authenticateLogin, async function (req, res, next) {
     if (taggedDecks.length != 0) {
       taggedDecks = taggedDecks[0].decks;
     };
+
     let messages = [];
-  if (cards.length == 0 && decks.length == 0 && taggedCards == 0 && taggedDecks == 0) {
-    let cards = await Card.find({});
-    let decks = await Deck.find({});
-    let messages = ["No cards, decks, or tags matched your search"]
-    res.render("index", {cards: cards,
-      decks: decks,
-      loggedIn: res.authenticate,
-      username: res.username,
-      messages: messages,})
-  } else {
-    res.render("index", {
-      searched: req.query.search,
-      cards: cards,
-      decks: decks,
-      taggedCards: taggedCards,
-      taggedDecks: taggedDecks,
-      loggedIn: res.authenticate,
-      username: res.username,
-      messages: messages,
-    });
-  }
+    if (cards.length == 0 && decks.length == 0 && taggedCards == 0 && taggedDecks == 0) {
+      let cards = await Card.find({});
+      let decks = await Deck.find({});
+      let messages = ["No cards, decks, or tags matched your search"]
+      res.render("index", {
+        cards: cards,
+        decks: decks,
+        searchables: searchables,
+        loggedIn: res.authenticate,
+        username: res.username,
+        messages: messages,})
+    } else {
+      res.render("index", {
+        searched: req.query.search,
+        cards: cards,
+        decks: decks,
+        taggedCards: taggedCards,
+        taggedDecks: taggedDecks,
+        searchables: searchables,
+        loggedIn: res.authenticate,
+        username: res.username,
+        messages: messages,
+      });
+    }
   } else {
     res.redirect('/')
   };
