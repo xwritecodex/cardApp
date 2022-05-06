@@ -13,7 +13,7 @@
     {{#if taggedCards}}
         <h3>Your search matched these tagged cards:</h3>
         <div class="container">
-            <div class="row">
+            <div class="row row-cols-auto">
                 {{#if loggedIn}}
                     {{#each taggedCards}}
                     {{> cardDivLoggedIn card = this}}
@@ -31,7 +31,7 @@
     {{#if taggedDecks}}
         <h3>Your search matched these tagged decks:</h3>
         <div class="container">
-            <div class="row">
+            <div class="row row-cols-auto">
                 {{#each taggedDecks}}
                 {{> deckDiv deck = this}}
                 {{/each}}
@@ -43,7 +43,7 @@
     {{#if cards}}
     <h3>Your search matched these card names:</h3>
     <div class="container">
-        <div class="row">
+        <div class="row row-cols-auto">
             {{#if loggedIn}}
                 {{#each cards}}
                 {{> cardDivLoggedIn card = this}}
@@ -61,7 +61,7 @@
     <hr>
     <h3>Your search matched these deck names:</h3>
     <div class="container">
-        <div class="row">
+        <div class="row row-cols-auto">
             {{#each decks}}
             {{> deckDiv deck = this}}
             {{/each}}
@@ -74,7 +74,7 @@
     {{#if cards}}
     <h3>Look at these awesome Cards!</h3>
     <div class="container">
-        <div class="row">
+        <div class="row row-cols-auto">
             {{#if loggedIn}}
                 {{#each cards}}
                 {{> cardDivLoggedIn card = this}}
@@ -92,7 +92,7 @@
     <hr>
     <h3>Look at these awesome Decks!</h3>
     <div class="container">
-        <div class="row">
+        <div class="row row-cols-auto">
             {{#each decks}}
             {{> deckDiv deck = this}}
             {{/each}}
