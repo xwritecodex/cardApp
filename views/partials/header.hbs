@@ -72,13 +72,18 @@
         <form class="d-flex" action="/search" method="GET">
           <input
             class="form-control me-2"
-            type="search"
+            list="datalistOptions"
             name="search"
             placeholder="Search by name or tag..."
             aria-label="Search"
             action="/search"
             method="GET"
           />
+          <datalist id="datalistOptions">
+            {{#each searchables}}
+            {{> tagOption searchable = this}}
+            {{/each}}
+          </datalist>
           <input class="btn btn-outline-success" type="submit" value="Search"/>
         </form>
       </div>

@@ -26,8 +26,34 @@ router.get('/', authenticateLogin, async function(req, res, next) {
       })
     })
   }
+
+  // IMPLEMENT AUTOFILL FOR QUERY
+  let searchables = []
+  let cardAutofill = await Card.find({}).lean()
+  cardAutofill.forEach((card) => {
+      card.cardName.split(' ').forEach((word) => {
+          searchables.push(word.toLowerCase())
+      })
+  })
+  let deckAutofill = await Deck.find({}).lean()
+  deckAutofill.forEach((deck) => {
+      deck.deckName.split(' ').forEach((word) => {
+          searchables.push(word.toLowerCase())
+      })
+  })
+  let taggedCardAutofill = await CardTag.find({}).lean()
+  taggedCardAutofill.forEach((tag) => {
+      searchables.push(tag.tag.toLowerCase())
+  })
+  let taggedDeckAutofill = await DeckTag.find({}).lean()
+  taggedDeckAutofill.forEach((tag) => {
+      searchables.push(tag.tag.toLowerCase())
+  })
+  searchables = Array.from(new Set(searchables));
+
+
   let messages = [];
-  res.render('index', { cards: cards, decks: decks, loggedIn: res.authenticate, username: res.username, messages: messages });
+  res.render('index', { cards: cards, decks: decks, searchables: searchables, loggedIn: res.authenticate, username: res.username, messages: messages });
 });
 
 // SELECT CARDS
