@@ -61,6 +61,11 @@ img.card {
     text-align: center;
 }
 
+img.crdimage,
+img.deckimage {
+    border-radius:4px;
+}
+
 p.name {
     text-align: center;
     font-size: auto;
@@ -70,9 +75,9 @@ p.name {
     border-bottom: 1px solid #2b415433;
 }
 
-img.crdimage,
-img.deckimage {
-    border-radius:4px;
+a.ratingLink, a.ratingLink:hover, a.ratingLink:focus, a.ratingLink:active {
+    text-decoration: none;
+    color: inherit;
 }
 
 .checked {
@@ -85,6 +90,4 @@ img.deckimage {
     height: 80px;
     border-radius: 50%;
     margin: 20px;
-  }
-
- 
+    }
