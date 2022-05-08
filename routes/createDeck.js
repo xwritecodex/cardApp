@@ -56,6 +56,56 @@ router.get("/", authenticateLogin, restrictRoute, async function (req, res, next
             });
         });
 
+        // CARD RATING: DETERMINE RATING AND ADD TEMPLATE LITERAL TO EACH card.rating
+        cards.forEach((card) => {
+            let averageRating = (card.ratings.reduce(function (a, b) {
+                return +a + +b
+            }, 0) / card.ratings.length)
+            if (averageRating > 0 && averageRating < 1.5) {
+                card.stars = `
+        <a href='/rate/card/${card._id}/1' class="ratingLink"><i class='fa fa-star checked'></i></a>
+        <a href='/rate/card/${card._id}/2' class="ratingLink"><i class='fa fa-star'></i></a>
+        <a href='/rate/card/${card._id}/3' class="ratingLink"><i class='fa fa-star'></i></a>
+        <a href='/rate/card/${card._id}/4' class="ratingLink"><i class='fa fa-star'></i></a>
+        <a href='/rate/card/${card._id}/5' class="ratingLink"><i class='fa fa-star'></i></a>`
+            } else if (averageRating >= 1.5 && averageRating < 2.5) {
+                card.stars = `
+        <a href='/rate/card/${card._id}/1' class="ratingLink"><i class='fa fa-star checked'></i></a>
+        <a href='/rate/card/${card._id}/2' class="ratingLink"><i class='fa fa-star checked'></i></a>
+        <a href='/rate/card/${card._id}/3' class="ratingLink"><i class='fa fa-star'></i></a>
+        <a href='/rate/card/${card._id}/4' class="ratingLink"><i class='fa fa-star'></i></a>
+        <a href='/rate/card/${card._id}/5' class="ratingLink"><i class='fa fa-star'></i></a>`
+            } else if (averageRating >= 2.5 && averageRating < 3.5) {
+                card.stars = `
+        <a href='/rate/card/${card._id}/1' class="ratingLink"><i class='fa fa-star checked'></i></a>
+        <a href='/rate/card/${card._id}/2' class="ratingLink"><i class='fa fa-star checked'></i></a>
+        <a href='/rate/card/${card._id}/3' class="ratingLink"><i class='fa fa-star checked'></i></a>
+        <a href='/rate/card/${card._id}/4' class="ratingLink"><i class='fa fa-star'></i></a>
+        <a href='/rate/card/${card._id}/5' class="ratingLink"><i class='fa fa-star'></i></a>`
+            } else if (averageRating >= 3.5 && averageRating < 4.5) {
+                card.stars = `
+        <a href='/rate/card/${card._id}/1' class="ratingLink"><i class='fa fa-star checked'></i></a>
+        <a href='/rate/card/${card._id}/2' class="ratingLink"><i class='fa fa-star checked'></i></a>
+        <a href='/rate/card/${card._id}/3' class="ratingLink"><i class='fa fa-star checked'></i></a>
+        <a href='/rate/card/${card._id}/4' class="ratingLink"><i class='fa fa-star checked'></i></a>
+        <a href='/rate/card/${card._id}/5' class="ratingLink"><i class='fa fa-star'></i></a>`
+            } else if (averageRating >= 4.5) {
+                card.stars = `
+        <a href='/rate/card/${card._id}/1' class="ratingLink"><i class='fa fa-star checked'></i></a>
+        <a href='/rate/card/${card._id}/2' class="ratingLink"><i class='fa fa-star checked'></i></a>
+        <a href='/rate/card/${card._id}/3' class="ratingLink"><i class='fa fa-star checked'></i></a>
+        <a href='/rate/card/${card._id}/4' class="ratingLink"><i class='fa fa-star checked'></i></a>
+        <a href='/rate/card/${card._id}/5' class="ratingLink"><i class='fa fa-star checked'></i></a>`
+            } else {
+                card.stars = `
+        <a href='/rate/card/${card._id}/1' class="ratingLink"><i class='fa fa-star'></i></a>
+        <a href='/rate/card/${card._id}/2' class="ratingLink"><i class='fa fa-star'></i></a>
+        <a href='/rate/card/${card._id}/3' class="ratingLink"><i class='fa fa-star'></i></a>
+        <a href='/rate/card/${card._id}/4' class="ratingLink"><i class='fa fa-star'></i></a>
+        <a href='/rate/card/${card._id}/5' class="ratingLink"><i class='fa fa-star'></i></a>`
+            }
+        })
+
         res.render("createDeck", {
             searchables: searchables,
             cards: cards,

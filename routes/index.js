@@ -97,7 +97,7 @@ router.get('/', authenticateLogin, async function(req, res, next) {
     }
   })
 
-  // CARD RATING: DETERMINE RATING AND ADD TEMPLATE LITERAL TO EACH card.rating
+  // DECK RATING: DETERMINE RATING AND ADD TEMPLATE LITERAL TO EACH card.rating
   decks.forEach((deck) => {
     let averageRating = (deck.ratings.reduce(function (a, b) { return +a + +b }, 0) / deck.ratings.length)
     if (averageRating > 0 && averageRating < 1.5) {
