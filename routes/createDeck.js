@@ -129,6 +129,7 @@ router.post("/", authenticateLogin, restrictRoute, async function (req, res, nex
         });
         let selectedCards = req.cookies.selected_cards
         deck.creator = res.id
+        deck.ratings = []
         deck.cards = JSON.parse(selectedCards);
         deck.save((err, doc) => {
             if (err) {
@@ -142,6 +143,7 @@ router.post("/", authenticateLogin, restrictRoute, async function (req, res, nex
     } else {
         let selectedCards = req.cookies.selected_cards
         deck.creator = res.id
+        deck.ratings = []
         deck.cards = JSON.parse(selectedCards);
         deck.save((err, doc) => {
             if (err) {
