@@ -1,0 +1,72 @@
+<main class="cardView">
+
+    <div class="col-4 mx-auto cardView">
+    {{#if loggedIn}}
+
+    <div class="card-box card">
+        <div class="card-thumbnail">
+            <img src={{card.cardImage}} class="img-fluid crdimage" alt="Card Image">
+        </div>
+        <h3 class="name">{{card.cardName}}</h3>
+
+
+        <div class="row row-cols-auto">
+
+        {{#if card.selected}} 
+        <div class="col-6 select-button">
+            <a href="/select/{{card._id}}" class="btn btn-success btn-sm unselect">Selected</a>
+        </div>
+        {{else}}
+        <div class="col-6 select-button">
+            <a href="/select/{{card._id}}" class="btn btn-primary btn-sm">Select</a>
+        </div>
+        {{/if}}
+
+        {{#if card.collected}}
+        <div class="col-6 collect-button">
+            <a href="/collect/{{card._id}}" class="btn btn-success btn-sm collected">Collected</a>
+        </div>
+        {{else}}
+        <div class="col-6 collect-button">
+            <a href="/collect/{{card._id}}" class="btn btn-primary btn-sm">Collect</a>
+        </div>
+        {{/if}}
+        
+        </div>
+
+
+        <p class="crddescription">Description: {{card.cardDescription}}</p>
+        <p class="crdlevel">Level: {{card.cardLevel}}</p>
+        <p class="crdpower">Power: {{card.cardPower}}</p>
+        <p class="crdtags">Tags: 
+            {{#each card.tags}}
+                <a href="/search?search={{this}}">{{this}}</a>
+            {{/each}}</p>
+        <p class="crdratings">Rating: <br>{{{card.stars}}}</p>
+
+        {{#if creator}}
+        <a href="/delete/{{card._id}}" class="btn btn-primary delete">Delete Card</a>
+        {{/if}}
+    </div>
+
+
+{{else}}
+
+    <div class="card-box card">
+        <div class="card-thumbnail">
+            <img src={{card.cardImage}} class="img-fluid crdimage" alt="Card Image">
+        </div>
+        <h3 class="name">{{card.cardName}}</h3>
+        <p class="crddescription">Description: {{card.cardDescription}}</p>
+        <p class="crdlevel">Level: {{card.cardLevel}}</p>
+        <p class="crdpower">Power: {{card.cardPower}}</p>
+        <p class="crdtags">Tags: 
+            {{#each card.tags}}
+                <a href="/search?search={{this}}">{{this}}</a>
+            {{/each}}</p>
+        <p class="crdratings">Rating: <br>{{{card.stars}}}</p>
+    </div>
+
+{{/if}}
+</div>
+</main>
