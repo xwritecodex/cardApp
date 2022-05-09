@@ -17,6 +17,7 @@ const userAccountRouter = require('./routes/userAccount');
 const rateRouter = require('./routes/rate');
 const collectRouter = require('./routes/collect');
 const cardViewRouter = require('./routes/cardView');
+const deckViewRouter = require('./routes/deckView');
 const deleteCardRouter = require('./routes/deleteCard');
 
 
@@ -63,6 +64,7 @@ app.use('/about', aboutRouter);
 app.use('/users', usersRouter);
 app.use('/search', searchRouter);
 app.use('/cardView/:id', cardViewRouter);
+app.use('/deckView', deckViewRouter);
 
 
 // RESTRICTED ROUTES
