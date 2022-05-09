@@ -31,22 +31,3 @@ router.get('/', authenticateLogin, restrictRoute, async function(req, res, next)
 })
 
 module.exports = router;
-
-//   if (unselect == false) {
-//     parsedCookie.push(req.params.id)
-//     console.log("SELECTED CARD IDs:", parsedCookie)
-//     res.clearCookie('selected_cards')
-//     res.cookie('selected_cards', JSON.stringify(parsedCookie))
-//   } else {
-//     let cookie = parsedCookie
-//     cookie.forEach((id, i) => {
-//       if (req.params.id == id) {
-//         parsedCookie.splice(i,1)
-//       }
-//       res.clearCookie('selected_cards')
-//       if (parsedCookie.length > 0) {
-//         res.cookie('selected_cards', JSON.stringify(cookie))
-//         console.log("UNSELECTED CARD IDs:", parsedCookie)
-//       }
-//     })
-//   }
