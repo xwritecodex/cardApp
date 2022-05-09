@@ -16,6 +16,9 @@ const searchRouter = require('./routes/search');
 const userAccountRouter = require('./routes/userAccount');
 const rateRouter = require('./routes/rate');
 const collectRouter = require('./routes/collect');
+const cardViewRouter = require('./routes/cardView');
+const deleteCardRouter = require('./routes/deleteCard');
+
 
 
 // HIDE YOUR MONGO CONNECTION VARIABLES 
@@ -59,6 +62,7 @@ app.use('/', indexRouter);
 app.use('/about', aboutRouter);
 app.use('/users', usersRouter);
 app.use('/search', searchRouter);
+app.use('/cardView/:id', cardViewRouter);
 
 
 // RESTRICTED ROUTES
@@ -69,6 +73,7 @@ app.use('/createDeck', createDeckRouter);
 app.use('/userAccount', userAccountRouter);
 app.use('/rate', rateRouter);
 app.use('/collect/:id', collectRouter);
+app.use('/delete/:id', deleteCardRouter);
 
 // CATCH 404 AND FORWARD TO ERROR HANDLER
 

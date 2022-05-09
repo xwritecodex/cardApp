@@ -113,8 +113,15 @@ h3.name {
     text-align: center;
 }
 
-@media only screen and (max-width: 1400px) and (min-width: 990px) {
-    a.collected {
-        font-size: 13.2px;
-    }
+div.col-12.viewCard-button {
+    width: 100%;
+    text-align: center;
+}
+
+div.col-4.cardView {
+    text-align: center;
+}
+
+main.cardView {
+    text-align: center;
 }

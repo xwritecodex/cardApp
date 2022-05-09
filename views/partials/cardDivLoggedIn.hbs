@@ -1,4 +1,4 @@
-<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-2 col-xxl-2">
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xxl-2">
     <div class="card-box card">
         <div class="card-thumbnail">
             <img src={{card.cardImage}} class="img-fluid crdimage" alt="Card Image">
@@ -30,6 +30,9 @@
         
         </div>
 
+        <div class="col-12 viewCard-button">
+            <a href="/cardView/{{card._id}}" class="btn btn-success btn-sm cardView">View Card</a>
+        </div>
 
         <p class="crddescription">Description: {{card.cardDescription}}</p>
         <p class="crdlevel">Level: {{card.cardLevel}}</p>
