@@ -21,21 +21,17 @@ router.get('/', authenticateLogin, async function(req, res, next) {
       JSON.parse(currentCookie).forEach((id) => {
         if (card._id.valueOf() == id) {
           card.selected = true;
-        } else {
-          card.unselect = true;
         }
       })
     })
   }
 
   let user = await User.findById(res.id);
-  if (user.cardCollection != undefined) {
+  if (user) {
     user.cardCollection.forEach((id) => {
       cards.forEach((card) => {
-        if (card._id == id) {
+        if (card._id.valueOf() == id) {
           card.collected = true;
-        } else if (card._id != id) {
-          card.notCollected = true;
         }
       })
     })
