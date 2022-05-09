@@ -91,3 +91,24 @@ a.ratingLink, a.ratingLink:hover, a.ratingLink:focus, a.ratingLink:active {
     border-radius: 50%;
     margin: 20px;
     }
+
+div.col-6 {
+    text-align: center;
+    padding: 0%;
+}  
+
+div.col-6.select-button {
+    padding-left: 10px;
+}
+
+div.col-6.collect-button {
+    padding-right: 9px;
+}
+
+div.col-6 a {
+    width: 95%;
+}
+
+h3.name {
+    text-align: center;
+}

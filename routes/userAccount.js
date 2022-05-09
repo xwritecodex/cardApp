@@ -8,7 +8,7 @@ const CardTag = require('../models/CardTag');
 const DeckTag = require('../models/DeckTag');
 const User = require('../models/User');
 
-router.get('/', authenticateLogin, async function (req, res, next) {
+router.get('/', authenticateLogin, restrictRoute, async function (req, res, next) {
     const user = await User.findById(res.id).populate("cardCollection");
     let createdCards = await Card.find({creator: res.id});
     let createdDecks = await Deck.find({creator: res.id});

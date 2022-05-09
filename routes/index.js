@@ -6,6 +6,7 @@ const Deck = require('../models/Deck');
 const Card = require('../models/Card');
 const CardTag = require('../models/CardTag');
 const DeckTag = require('../models/DeckTag');
+const User = require('../models/User');
 
 
 // GET HOME PAGE
@@ -19,11 +20,27 @@ router.get('/', authenticateLogin, async function(req, res, next) {
     cards.forEach((card) => {
       JSON.parse(currentCookie).forEach((id) => {
         if (card._id.valueOf() == id) {
-          card.selected = true
+          card.selected = true;
+        } else {
+          card.unselect = true;
         }
       })
     })
   }
+
+  let user = await User.findById(res.id);
+  if (user.cardCollection != undefined) {
+    user.cardCollection.forEach((id) => {
+      cards.forEach((card) => {
+        if (card._id == id) {
+          card.collected = true;
+        } else if (card._id != id) {
+          card.notCollected = true;
+        }
+      })
+    })
+  }
+  
   
   // IMPLEMENT AUTOFILL FOR QUERY
   let searchables = []

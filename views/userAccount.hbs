@@ -10,8 +10,8 @@
     <div class="col-md-12">
     <h4>Card Collection</h4>
       <div class="row">
-        {{#if cards}}
-          {{#each cards}}
+        {{#if cardCollection}}
+          {{#each cardCollection}}
           {{> cardDivLoggedIn card = this}}
           {{/each}}
         {{else}}
@@ -34,9 +34,9 @@
 <div class="col-md-12">
     <h4>Decks Created</h4>
       <div class="row">
-        {{#if decks}}
-          {{#each decks}}
-          {{> deckDiv card = this}}
+        {{#if createdDecks}}
+          {{#each createdDecks}}
+          {{> deckDiv deck = this}}
           {{/each}}
         {{else}}
           <h5>You have not created any decks yet</h5>
