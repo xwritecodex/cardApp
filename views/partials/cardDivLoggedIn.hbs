@@ -5,37 +5,34 @@
         </div>
         <h3 class="name">{{card.cardName}}</h3>
 
-        {{#if card.selected}} 
         <div class="row row-cols-auto">
+
+        {{#if card.selected}} 
         <div class="col-6 select-button">
             <a href="/select/{{card._id}}" class="btn btn-success btn-sm unselect">Selected</a>
         </div>
-        </div> 
         {{else}}
-        <div class="row row-cols-auto">
         <div class="col-6 select-button">
             <a href="/select/{{card._id}}" class="btn btn-primary btn-sm">Select</a>
         </div>
-        </div> 
         {{/if}}
+
         {{#if card.collected}}
-        <div class="row row-cols-auto">
         <div class="col-6 collect-button">
-            <a href="/collect/{{card._id}}" class="btn btn-success btn-sm unselect">Collected</a>
+            <a href="/collect/{{card._id}}" class="btn btn-success btn-sm collected">Collected</a>
         </div>
-        </div>   
         {{else}}
-        <div class="row row-cols-auto">
         <div class="col-6 collect-button">
             <a href="/collect/{{card._id}}" class="btn btn-primary btn-sm">Collect</a>
         </div>
+        {{/if}}
+
         </div>
-        {{/if}} 
 
         {{!-- {{#if card.collected}}
         <div class="row row-cols-auto">
         <div class="col-6 collect-button">
-            <a href="/collect/{{card._id}}" class="btn btn-success btn-sm unselect">Collected</a>
+            <a href="/collect/{{card._id}}" class="btn btn-success btn-sm unselect"></a>
         </div>
         </div>      
     

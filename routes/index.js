@@ -29,15 +29,12 @@ router.get('/', authenticateLogin, async function(req, res, next) {
   }
 
   let user = await User.findById(res.id);
-  console.log(user)
-
-
   if (user) {
     user.cardCollection.forEach((id) => {
       cards.forEach((card) => {
-        if (card._id == id) {
+        if (card._id.valueOf() == id) {
           card.collected = true;
-        } else if (card._id != id) {
+        } else {
           card.notCollected = true;
         }
       })
