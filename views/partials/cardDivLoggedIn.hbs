@@ -5,6 +5,7 @@
         </div>
         <h3 class="name">{{card.cardName}}</h3>
 
+
         <div class="row row-cols-auto">
 
         {{#if card.selected}} 
@@ -26,22 +27,9 @@
             <a href="/collect/{{card._id}}" class="btn btn-primary btn-sm">Collect</a>
         </div>
         {{/if}}
-
+        
         </div>
 
-        {{!-- {{#if card.collected}}
-        <div class="row row-cols-auto">
-        <div class="col-6 collect-button">
-            <a href="/collect/{{card._id}}" class="btn btn-success btn-sm unselect"></a>
-        </div>
-        </div>      
-    
-        <div class="row row-cols-auto">
-        <div class="col-6 collect-button">
-            <a href="/collect/{{card._id}}" class="btn btn-primary btn-sm">Collect</a>
-        </div>
-        </div> --}}
-        {{!-- {{/if}} --}}
 
         <p class="crddescription">Description: {{card.cardDescription}}</p>
         <p class="crdlevel">Level: {{card.cardLevel}}</p>

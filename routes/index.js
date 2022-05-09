@@ -21,8 +21,6 @@ router.get('/', authenticateLogin, async function(req, res, next) {
       JSON.parse(currentCookie).forEach((id) => {
         if (card._id.valueOf() == id) {
           card.selected = true;
-        } else {
-          card.unselect = true;
         }
       })
     })
@@ -34,8 +32,6 @@ router.get('/', authenticateLogin, async function(req, res, next) {
       cards.forEach((card) => {
         if (card._id.valueOf() == id) {
           card.collected = true;
-        } else {
-          card.notCollected = true;
         }
       })
     })
