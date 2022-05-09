@@ -122,6 +122,41 @@ div.col-4.cardView {
     text-align: center;
 }
 
+div.col-12.deckView-button {
+    width: 100%;
+    text-align: center;
+}
+
+a.btn.btn-primary.btn-sm.select {
+    background: rgb(98, 209, 246);
+    border: rgb(98, 209, 246);
+    /* color: #6b3e2e; */
+}
+a.btn.btn-success.btn-sm.unselect {
+    background: rgb(47, 131, 234);
+    border: rgb(47, 131, 234);
+}
+
+a.btn.btn-primary.btn-sm.collect {
+    background: #FFBBC8;
+    border: #FFBBC8;
+}
+
+a.btn.btn-success.btn-sm.collected {
+    background: #E270A4;
+    border: #E270A4;
+}
+
+a.btn.btn-success.btn-sm.cardView {
+    background: #FFE354;
+    border: #FFE354;
+}
+
+a.btn.btn-success.btn-sm.deckView {
+    background: #FFE354;
+    border: #FFE354;
+}
+
 main.cardView {
     text-align: center;
 }

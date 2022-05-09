@@ -13,6 +13,10 @@
             {{/each}}</p>
         </p>
         <p class="crdratings">Rating: <br>{{{deck.stars}}}</p>
+
+        {{#if creator}}
+        <a href="/deleteDeck/{{deck._id}}" class="btn btn-primary delete">Delete Deck</a>
+        {{/if}}
     </div>
     </div>
 

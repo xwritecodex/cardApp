@@ -138,7 +138,7 @@ router.get('/:id', authenticateLogin, async function(req, res, next) {
             <a href='/rate/card/${card._id}/5' class="ratingLink"><i class='fa fa-star'></i></a>`
             }
         })
-    res.render('deckView', {deck: deck, cards: deck.cards, loggedIn: res.authenticate, username: res.username})
+    res.render('deckView', {deck: deck, cards: deck.cards, creator: creator, loggedIn: res.authenticate, username: res.username})
 });
 
 module.exports = router;
