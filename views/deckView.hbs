@@ -1,11 +1,9 @@
-<main>
-    <h5>its gucciiii</h5>
-    {{#if loggedIn}}
+<main class="cardView">
+    <div class="col-4 mx-auto cardView">
     <h5>Deck card</h5>
-    <div class="col-md-5 col-lg-3 col-xl-2">
     <div class="card-box card">
         <div class="deck-thumbnail">
-            <img src={{deck.deckImage}} class="img-fluid deckimage" alt="Deck Image">
+            <img src="{{deck.deckImage}}" class="img-fluid deckimage" alt="Deck Image">
         </div>
         <h3 class="name">{{deck.deckName}}</h3>
         <p class="deckdescription">Description: {{deck.deckDescription}}</p>
@@ -15,58 +13,24 @@
             {{/each}}</p>
         </p>
         <p class="crdratings">Rating: <br>{{{deck.stars}}}</p>
-
     </div>
-</div>
+    </div>
 
     <h5>Cards within the deck</h5>
 
-<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xxl-2">
-    <div class="card-box card">
-        <div class="card-thumbnail">
-            <img src={{card.cardImage}} class="img-fluid crdimage" alt="Card Image">
+    {{#if cards}}
+    <div class="container">
+        <div class="row mx-auto">
+            {{#if loggedIn}}
+                {{#each cards}}
+                {{> cardDivLoggedIn card = this}}
+                {{/each}}
+            {{else}}
+                {{#each cards}}
+                {{> cardDiv card = this}}
+                {{/each}}
+            {{/if}}
         </div>
-        <h3 class="name">{{card.cardName}}</h3>
-
-
-        <div class="row row-cols-auto">
-
-        {{#if card.selected}} 
-        <div class="col-6 select-button">
-            <a href="/select/{{card._id}}" class="btn btn-success btn-sm unselect">Selected</a>
-        </div>
-        {{else}}
-        <div class="col-6 select-button">
-            <a href="/select/{{card._id}}" class="btn btn-primary btn-sm">Select</a>
-        </div>
-        {{/if}}
-
-        {{#if card.collected}}
-        <div class="col-6 collect-button">
-            <a href="/collect/{{card._id}}" class="btn btn-success btn-sm collected">Collected</a>
-        </div>
-        {{else}}
-        <div class="col-6 collect-button">
-            <a href="/collect/{{card._id}}" class="btn btn-primary btn-sm">Collect</a>
-        </div>
-        {{/if}}
-        
-        </div>
-
-        <div class="col-12 viewCard-button">
-            <a href="/cardView/{{card._id}}" class="btn btn-success btn-sm cardView">View Card</a>
-        </div>
-
-        <p class="crddescription">Description: {{card.cardDescription}}</p>
-        <p class="crdlevel">Level: {{card.cardLevel}}</p>
-        <p class="crdpower">Power: {{card.cardPower}}</p>
-        <p class="crdtags">Tags: 
-            {{#each card.tags}}
-                <a href="/search?search={{this}}">{{this}}</a>
-            {{/each}}</p>
-        <p class="crdratings">Rating: <br>{{{card.stars}}}</p>
     </div>
-    </div>
-
     {{/if}}
 </main>
