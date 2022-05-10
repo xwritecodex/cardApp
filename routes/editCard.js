@@ -8,7 +8,7 @@ const CardTag = require('../models/CardTag');
 const DeckTag = require('../models/DeckTag');
 const User = require('../models/User');
 
-router.get('/', authenticateLogin, async function(req, res, next) {
+router.get('/', authenticateLogin, restrictRoute, async function(req, res, next) {
     const card = await Card.findById(req.params.id);
     res.render('editCard', {card: card, loggedIn: res.authenticate, username: res.username})
 })

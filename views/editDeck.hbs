@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<main>
+  {{#each messages}}
+  <div class="container-fluid alert alert-warning notification">
+    {{this}}
+  </div>
+  {{/each}}
+<form action='/editDeck/{{deck._id}}' method="POST">
+<form class="row g-3">
+  <div class="col-4">
+    <label for="name" class="form-label">Deck Name</label>
+    <input type="text" class="form-control" id="name" name="deckName" value="{{deck.deckName}}" autofocus>
+  </div>
+  <div class="col-md-8">
+    <label for="description" class="form-label">Description</label>
+    <input type="text" class="form-control" id="description" name="deckDescription" value="{{deck.deckDescription}}">
+  </div>
+  <div class="col-md-8">
+    <label for="imageUrl" class="form-label">Cover Image</label>
+    <input type="url" class="form-control" id="imageUrl" name="deckImage" value="{{deck.deckImage}}">
+  </div>
+  <div class="col-md-12">
+    <label for="cards" class="form-label">Selected Cards</label>
+      <div class="row">
+        {{#if cards}}
+          {{#each cards}}
+          {{> cardDivLoggedIn card = this}}
+          {{/each}}
+        {{else}}
+          <h5>No cards selected!</h5>
+        {{/if}}
+      </div>
+  </div>
+  <div class="col-md-2">
+    <label for="tags" class="form-label">Tags</label>
+    <input type="text" class="form-control" id="tags" name="tags" placeholder="{{deck.tags}}">
+  </div>
+  <div class="col-md-12">
+    <button type="submit" class="btn btn-primary lower">Edit Deck</button>
+  </div>
+</div>
+</form>
