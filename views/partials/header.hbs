@@ -1,7 +1,11 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/"><img src="/images/favicon.ico"></a>
+    <div class="container">
+    <div class="row">
+
+      <div class="col">
+
+      <a class="navbar-brand" href="/" style="float:left;"><img src="/images/favicon.ico"></a>
       <button
         class="navbar-toggler"
         type="button"
@@ -43,7 +47,10 @@
           </li>
           {{/if}}
 
-       
+          </div>
+
+          <div class="col">
+        
         <form class="d-flex" action="/search" method="GET">
           <input
             class="form-control me-2"
@@ -61,7 +68,11 @@
           </datalist>
           <input class="btn btn-outline-success" type="submit" value="Search"/>
         </form>
+
+        </div>
+
       </div>
+    </div>
     </div>
   </nav>
 </header>
