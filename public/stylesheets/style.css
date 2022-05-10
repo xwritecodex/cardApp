@@ -160,3 +160,7 @@ a.btn.btn-success.btn-sm.deckView {
 main.cardView {
     text-align: center;
 }
+
+input.form-control.me-2 {
+    width: 230px!important;
+}
