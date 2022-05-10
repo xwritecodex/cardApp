@@ -157,6 +157,11 @@ a.btn.btn-success.btn-sm.deckView {
     border: #FFE354;
 }
 
+a.btn.btn-primary.delete {
+    background: lightcoral;
+    border: lightcoral;
+}
+
 main.cardView {
     text-align: center;
 }

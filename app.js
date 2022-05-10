@@ -20,6 +20,7 @@ const cardViewRouter = require('./routes/cardView');
 const deckViewRouter = require('./routes/deckView');
 const deleteCardRouter = require('./routes/deleteCard');
 const deleteDeckRouter = require('./routes/deleteDeck');
+const editCardRouter = require('./routes/editCard');
 
 
 
@@ -78,6 +79,7 @@ app.use('/rate', rateRouter);
 app.use('/collect/:id', collectRouter);
 app.use('/delete/:id', deleteCardRouter);
 app.use('/deleteDeck/:id', deleteDeckRouter);
+app.use('/editCard/:id', editCardRouter);
 
 // CATCH 404 AND FORWARD TO ERROR HANDLER
 

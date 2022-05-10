@@ -18,7 +18,7 @@
         </div>
         {{else}}
         <div class="col-6 select-button">
-            <a href="/select/{{card._id}}" class="btn btn-primary btn-sm">Select</a>
+            <a href="/select/{{card._id}}" class="btn btn-primary btn-sm select">Select</a>
         </div>
         {{/if}}
 
@@ -28,7 +28,7 @@
         </div>
         {{else}}
         <div class="col-6 collect-button">
-            <a href="/collect/{{card._id}}" class="btn btn-primary btn-sm">Collect</a>
+            <a href="/collect/{{card._id}}" class="btn btn-primary btn-sm collect">Collect</a>
         </div>
         {{/if}}
         
@@ -45,6 +45,7 @@
         <p class="crdratings">Rating: <br>{{{card.stars}}}</p>
 
         {{#if creator}}
+        <a href="/editCard/{{card._id}}" class="btn btn-primary edit">Edit Card</a>
         <a href="/delete/{{card._id}}" class="btn btn-primary delete">Delete Card</a>
         {{/if}}
     </div>
