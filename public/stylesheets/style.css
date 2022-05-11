@@ -167,5 +167,9 @@ main.cardView {
 }
 
 input.form-control.me-2 {
-    width: 230px!important;
+    width: 200px!important;
+}
+
+#navbarSupportedContent {
+    padding-top: 7px;
 }
